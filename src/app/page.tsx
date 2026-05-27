@@ -250,8 +250,8 @@
             GeoMapAI
           </span>
           <span>© 2025 GeoMapAI — Un produit Wikolabs</span>
-          <a href="mailto:hello@wikolabs.com" className="hover:text-emerald-700 transition-colors">
-            hello@wikolabs.com
+          <a href="mailto:team@wikolabs.com" className="hover:text-emerald-700 transition-colors">
+            team@wikolabs.com
           </a>
         </div>
       </footer>
