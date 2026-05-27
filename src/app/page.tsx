@@ -49,11 +49,22 @@
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <a
-                href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
+                href="https://calendly.com/wikolabs"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-center"
                 style={{ background: "#064e3b" }}
               >
-                Analyser mon territoire
+                📅 Réserver un créneau →
+              </a>
+              <a
+                href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20GeoMapAI%20avec%20Wikolabs."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white font-semibold px-6 py-3 rounded-lg text-center"
+                style={{ background: "#25d366" }}
+              >
+                💬 WhatsApp →
               </a>
               <a
                 href="#fonctionnalites"
@@ -229,13 +240,26 @@
           <p className="text-gray-600 mb-8">
             Importez vos données, configurez vos zones et obtenez vos premières recommandations géospatiales en moins d'une heure. Nos experts vous guident en live.
           </p>
-          <a
-            href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
-            className="inline-block text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity text-lg"
-            style={{ background: "#064e3b" }}
-          >
-            Analyser mon territoire →
-          </a>
+          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+            <a
+              href="https://calendly.com/wikolabs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity text-lg"
+              style={{ background: "#064e3b" }}
+            >
+              📅 Réserver un créneau →
+            </a>
+            <a
+              href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20GeoMapAI%20avec%20Wikolabs."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-white font-semibold px-8 py-4 rounded-xl text-lg"
+              style={{ background: "#25d366" }}
+            >
+              💬 WhatsApp →
+            </a>
+          </div>
           <p className="text-xs text-gray-400 mt-4">Réponse sous 24h · Sans engagement</p>
         </div>
       </section>
