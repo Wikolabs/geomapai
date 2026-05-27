@@ -1,4 +1,4 @@
-export default function GeoMapAIPage() {
+﻿export default function GeoMapAIPage() {
   return (
     <div className="min-h-screen bg-green-50 text-gray-900" style={{ fontFamily: "var(--font-body, 'Open Sans', sans-serif)" }}>
 
@@ -17,7 +17,7 @@ export default function GeoMapAIPage() {
             <a href="#cta" className="hover:text-emerald-700 transition-colors">Contact</a>
           </div>
           <a
-            href="mailto:hello@wikolabs.com?subject=GeoMapAI — Demande de démo"
+            href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
             className="text-white text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
             style={{ background: "#064e3b" }}
           >
@@ -49,7 +49,7 @@ export default function GeoMapAIPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <a
-                href="mailto:hello@wikolabs.com?subject=GeoMapAI — Demande de démo"
+                href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
                 className="text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-center"
                 style={{ background: "#064e3b" }}
               >
@@ -230,7 +230,7 @@ export default function GeoMapAIPage() {
             Importez vos données, configurez vos zones et obtenez vos premières recommandations géospatiales en moins d'une heure. Nos experts vous guident en live.
           </p>
           <a
-            href="mailto:hello@wikolabs.com?subject=GeoMapAI — Demande de démo"
+            href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
             className="inline-block text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity text-lg"
             style={{ background: "#064e3b" }}
           >
