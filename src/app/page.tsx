@@ -16,13 +16,11 @@
             <a href="#stats" className="hover:text-emerald-700 transition-colors">Résultats</a>
             <a href="#cta" className="hover:text-emerald-700 transition-colors">Contact</a>
           </div>
-          <a
-            href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer"
+          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button"
             className="text-white text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
-            style={{ background: "#064e3b" }}
-          >
+            style={{ background: "#064e3b" }}>
             Demander une démo
-          </a>
+          </button>
         </div>
       </nav>
 
@@ -48,15 +46,11 @@
               GeoMapAI analyse vos territoires, optimise vos tournées et cartographie vos concurrents grâce à l'intelligence artificielle. Prenez des décisions terrain fondées sur la donnée.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <a
-                href="https://calendly.com/wikolabs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-center"
-                style={{ background: "#064e3b" }}
-              >
+              <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button"
+            className="text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-center"
+                style={{ background: "#064e3b" }}>
                 📅 Réserver un créneau →
-              </a>
+              </button>
               <a
                 href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20GeoMapAI%20avec%20Wikolabs."
                 target="_blank"
@@ -241,15 +235,11 @@
             Importez vos données, configurez vos zones et obtenez vos premières recommandations géospatiales en moins d'une heure. Nos experts vous guident en live.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <a
-              href="https://calendly.com/wikolabs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity text-lg"
-              style={{ background: "#064e3b" }}
-            >
+            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button"
+            className="inline-block text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity text-lg"
+              style={{ background: "#064e3b" }}>
               📅 Réserver un créneau →
-            </a>
+            </button>
             <a
               href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20GeoMapAI%20avec%20Wikolabs."
               target="_blank"
