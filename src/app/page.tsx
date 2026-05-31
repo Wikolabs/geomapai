@@ -1,279 +1,231 @@
-﻿export default function GeoMapAIPage() {
-  return (
-    <div className="min-h-screen bg-green-50 text-gray-900" style={{ fontFamily: "var(--font-body, 'Open Sans', sans-serif)" }}>
+﻿"use client";
 
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-emerald-100 shadow-sm">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span
-            className="text-xl font-bold"
-            style={{ fontFamily: "var(--font-display, 'Montserrat', sans-serif)", color: "#064e3b" }}
-          >
-            GeoMapAI
-          </span>
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-            <a href="#fonctionnalites" className="hover:text-emerald-700 transition-colors">Fonctionnalités</a>
-            <a href="#stats" className="hover:text-emerald-700 transition-colors">Résultats</a>
-            <a href="#cta" className="hover:text-emerald-700 transition-colors">Contact</a>
+const P = {
+  name: "GeoMapAI",
+  tagLabel: "Geospatial · Logistique · Territoire · IA",
+  taglines: ["Votre territoire cartographie.", "Vos tournees optimisees.", "Vos concurrents localises."],
+  taglineAccentIdx: 1,
+  desc: "GeoMapAI analyse vos zones de chalandise, recalcule vos tournees en temps reel et vous montre les zones blanches non adressees. Prenez des decisions terrain fondees sur la donnee geospatiale.",
+  accent: "#34D399",
+  accentDim: "rgba(52,211,153,0.1)",
+  accentBorder: "rgba(52,211,153,0.25)",
+  accentGlow: "rgba(52,211,153,0.12)",
+  waText: "GeoMapAI",
+  navLinks: [
+    { label: "Fonctionnalites", href: "#features" },
+    { label: "Comment ca marche", href: "#process" },
+    { label: "Contact", href: "#cta" },
+  ],
+  metrics: [
+    { value: "34%", label: "reduction couts logistiques" },
+    { value: "247", label: "zones analysees" },
+    { value: "90j", label: "retour sur investissement" },
+    { value: "100%", label: "temps reel" },
+  ],
+  features: [
+    { icon: "map", title: "Analyse de territoire", desc: "Scorez vos zones de chalandise selon leur potentiel de chiffre d'affaires. Identifiez les zones sous-exploitees et priorisez vos actions commerciales grace a l'IA." },
+    { icon: "truck", title: "Optimisation logistique", desc: "L'IA recalcule vos tournees en integrant le trafic live, les creneaux horaires et vos contraintes metier. Reduction garantie de 20 a 40% des distances parcourues." },
+    { icon: "radar", title: "Cartographie concurrentielle", desc: "Visualisez la densite concurrente sur votre territoire, detectez les zones blanches et positionnez-vous strategiquement avant vos rivaux." },
+  ],
+  steps: [
+    { num: "01", title: "Importez vos donnees terrain", desc: "Connectez vos fichiers de points de vente, vos clients ou vos itineraires existants. GeoMapAI accepte CSV, GeoJSON ou connexion directe a votre CRM." },
+    { num: "02", title: "L'IA analyse et score chaque zone", desc: "L'algorithme geospatial identifie les opportunites, calcule les potentiels de CA et simule les scenarios d'implantation en quelques secondes." },
+    { num: "03", title: "Decisions actionnables en un clic", desc: "Exportez vos cartes enrichies, vos tournees optimisees et vos recommandations d'implantation directement dans vos outils metier (CRM, Excel, Google Maps)." },
+  ],
+  testimonials: [
+    { quote: "On a reduit nos couts kilometriques de 31% en 6 semaines. GeoMapAI a recalcule l'ensemble de nos 47 tournees sans qu'on touche a quoi que ce soit. Le ROI est immediat.", author: "Laurent M.", role: "Directeur Logistique, Distributeur regional" },
+    { quote: "Grace a la cartographie concurrentielle, on a identifie trois zones blanches dans notre region. On y a ouvert deux points de vente. C'est une donnee qu'on n'avait jamais eue avant.", author: "Isabelle V.", role: "Directrice Commerciale, Reseau de franchise" },
+  ],
+  ctaTitle: "Votre territoire sous un nouvel angle, des demain",
+  ctaDesc: "Importez vos donnees, configurez vos zones et obtenez vos premieres recommandations geospatiales en moins d'une heure. Nos experts vous guident en live.",
+  ctaPrimary: "Reserver un creneau",
+  footerTagline: "Intelligence geospatiale IA pour logistique et territoire",
+};
+
+export default function Page() {
+  const bg = "#04080F";
+  const bg2 = "#070D1B";
+  const card = "rgba(255,255,255,0.04)";
+  const border = "rgba(255,255,255,0.09)";
+  const gold = "#D4AF37";
+  const goldDim = "rgba(212,175,55,0.1)";
+  const goldBorder = "rgba(212,175,55,0.28)";
+  const txt1 = "#F0EDE6";
+  const txt2 = "#8B9DB5";
+  const txt3 = "#3C5068";
+  const { accent, accentDim, accentBorder, accentGlow } = P;
+
+  return (
+    <div style={{ minHeight: "100vh", background: bg, color: txt1 }}>
+      <style>{`
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pulseDot { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.4; transform:scale(1.6); } }
+        .wk-card { transition: background .3s, border-color .3s, transform .35s cubic-bezier(.34,1.2,.64,1); }
+        .wk-card:hover { background: rgba(255,255,255,0.07) !important; border-color: rgba(52,211,153,0.25) !important; transform: translateY(-6px) !important; }
+        .wk-btn { transition: opacity .2s, transform .2s, box-shadow .2s; }
+        .wk-btn:hover { opacity:.9; transform:translateY(-2px); box-shadow:0 12px 32px rgba(212,175,55,.18); }
+        .wk-wa { transition: opacity .2s, transform .2s; }
+        .wk-wa:hover { opacity:.9; transform:translateY(-2px); }
+        .wk-nav-link { color: #8B9DB5; text-decoration:none; font-size:14px; font-weight:500; transition:color .2s; }
+        .wk-nav-link:hover { color: #F0EDE6; }
+        @media(max-width:640px){ .wk-hide-sm{ display:none!important; } .wk-hero-title{ font-size:2.4rem!important; } }
+      `}</style>
+
+      {/* NAVBAR */}
+      <nav style={{ position:"sticky", top:0, zIndex:100, background:"rgba(4,8,15,0.82)", backdropFilter:"blur(20px)", borderBottom:`1px solid ${border}`, padding:"0 40px", height:60, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+        <span style={{ fontSize:18, fontWeight:800, letterSpacing:"-0.5px", color:txt1 }}>
+          {P.name}<span style={{ color:gold }}>.</span>
+        </span>
+        <div style={{ display:"flex", gap:28, alignItems:"center" }}>
+          <div className="wk-hide-sm" style={{ display:"flex", gap:24 }}>
+            {P.navLinks.map(l => <a key={l.label} href={l.href} className="wk-nav-link">{l.label}</a>)}
           </div>
-          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button"
-            className="text-white text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
-            style={{ background: "#064e3b" }}>
-            Demander une démo
+          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn"
+            style={{ background:gold, color:"#04080F", border:"none", borderRadius:8, padding:"8px 18px", fontWeight:700, fontSize:13.5, cursor:"pointer", fontFamily:"inherit" }}>
+            Reserver →
           </button>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-14">
-          <div className="flex-1 text-center lg:text-left">
-            <span
-              className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wider"
-              style={{ background: "#d1fae5", color: "#064e3b" }}
-            >
-              IA · Géospatial · Logistique
-            </span>
-            <h1
-              className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-5"
-              style={{ fontFamily: "var(--font-display, 'Montserrat', sans-serif)" }}
-            >
-              Intelligence géospatiale —<br />
-              <span style={{ color: "#064e3b" }}>transformez vos données</span><br />
-              terrain en décisions
-            </h1>
-            <p className="text-gray-600 text-lg mb-8 max-w-xl">
-              GeoMapAI analyse vos territoires, optimise vos tournées et cartographie vos concurrents grâce à l'intelligence artificielle. Prenez des décisions terrain fondées sur la donnée.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button"
-            className="text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-center"
-                style={{ background: "#064e3b" }}>
-                📅 Réserver un créneau →
-              </button>
-              <a
-                href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20GeoMapAI%20avec%20Wikolabs."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white font-semibold px-6 py-3 rounded-lg text-center"
-                style={{ background: "#25d366" }}
-              >
-                💬 WhatsApp →
-              </a>
-              <a
-                href="#fonctionnalites"
-                className="border font-semibold px-6 py-3 rounded-lg hover:bg-emerald-50 transition-colors text-center"
-                style={{ borderColor: "#064e3b", color: "#064e3b" }}
-              >
-                Voir une démonstration
-              </a>
+      {/* HERO */}
+      <section style={{ padding:"100px 40px 80px", maxWidth:1000, margin:"0 auto", textAlign:"center", position:"relative" }}>
+        <div style={{ position:"absolute", top:-60, left:"50%", transform:"translateX(-50%)", width:700, height:600, background:`radial-gradient(ellipse at 50% 30%, ${accentGlow} 0%, transparent 60%)`, pointerEvents:"none" }} />
+        <div style={{ display:"inline-flex", alignItems:"center", gap:8, marginBottom:24, background:accentDim, border:`1px solid ${accentBorder}`, borderRadius:100, padding:"6px 18px", animation:"fadeUp .5s ease both" }}>
+          <span style={{ width:7, height:7, borderRadius:"50%", background:accent, display:"inline-block", animation:"pulseDot 2s ease-in-out infinite" }} />
+          <span style={{ color:accent, fontSize:11.5, fontWeight:700, letterSpacing:"2px", textTransform:"uppercase" }}>{P.tagLabel}</span>
+        </div>
+        <h1 className="wk-hero-title" style={{ fontSize:"clamp(2.6rem,6vw,5rem)", fontWeight:700, lineHeight:1.08, letterSpacing:"-0.03em", marginBottom:28, fontFamily:"'Instrument Serif',Georgia,serif", animation:"fadeUp .5s .08s ease both" }}>
+          {P.taglines.map((line, i) => (
+            <span key={i} style={{ display:"block", color:i===P.taglineAccentIdx?accent:txt1, fontStyle:i===P.taglineAccentIdx?"italic":"normal" }}>{line}</span>
+          ))}
+        </h1>
+        <p style={{ fontSize:"1.1rem", color:txt2, lineHeight:1.72, maxWidth:580, margin:"0 auto 48px", animation:"fadeUp .5s .16s ease both" }}>{P.desc}</p>
+        <div style={{ display:"flex", flexWrap:"wrap", justifyContent:"center", gap:14, marginBottom:44, animation:"fadeUp .5s .24s ease both" }}>
+          {P.metrics.map(m => (
+            <div key={m.label} style={{ background:card, border:`1px solid ${border}`, borderRadius:18, padding:"14px 22px", textAlign:"center", minWidth:118 }}>
+              <div style={{ fontSize:"1.7rem", fontWeight:800, color:txt1, letterSpacing:"-1.5px", lineHeight:1 }}>{m.value}</div>
+              <div style={{ fontSize:"0.62rem", color:txt3, textTransform:"uppercase", letterSpacing:"1.5px", marginTop:5 }}>{m.label}</div>
             </div>
-          </div>
-
-          {/* Fake map interface mockup */}
-          <div className="flex-1 w-full max-w-lg bg-white rounded-2xl shadow-xl border border-emerald-100 overflow-hidden">
-            {/* Map toolbar */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-gray-50">
-              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Carte — Île-de-France</span>
-              <div className="flex gap-2">
-                <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-medium">En direct</span>
-                <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Q2 2025</span>
-              </div>
-            </div>
-
-            {/* Map body */}
-            <div className="relative h-52 bg-gradient-to-br from-emerald-50 to-teal-100 overflow-hidden">
-              {/* Zone blobs */}
-              <div className="absolute top-4 left-8 w-24 h-16 rounded-full opacity-40" style={{ background: "#10b981" }} />
-              <div className="absolute top-10 left-20 w-16 h-20 rounded-full opacity-30" style={{ background: "#064e3b" }} />
-              <div className="absolute top-6 right-16 w-20 h-14 rounded-full opacity-35" style={{ background: "#f59e0b" }} />
-              <div className="absolute bottom-8 left-12 w-28 h-12 rounded-full opacity-25" style={{ background: "#10b981" }} />
-              <div className="absolute bottom-4 right-8 w-20 h-16 rounded-full opacity-30" style={{ background: "#064e3b" }} />
-
-              {/* Route lines */}
-              <div className="absolute top-16 left-16 w-32 h-0.5 bg-emerald-600 opacity-70 rotate-12" />
-              <div className="absolute top-20 left-28 w-24 h-0.5 bg-emerald-600 opacity-70 -rotate-6" />
-              <div className="absolute top-24 right-20 w-20 h-0.5 bg-amber-500 opacity-60 rotate-3" />
-
-              {/* Location pins */}
-              <div className="absolute top-3 left-10 text-base">📍</div>
-              <div className="absolute top-8 left-32 text-base">📍</div>
-              <div className="absolute bottom-6 left-24 text-base">📍</div>
-              <div className="absolute top-5 right-12 text-base">📍</div>
-              <div className="absolute bottom-10 right-20 text-base">📍</div>
-
-              {/* Legend */}
-              <div className="absolute bottom-2 left-2 bg-white/90 rounded-lg px-3 py-2 text-xs space-y-1 shadow">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full inline-block" style={{ background: "#10b981" }} />
-                  <span className="text-gray-700">Zone forte valeur</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full inline-block" style={{ background: "#f59e0b" }} />
-                  <span className="text-gray-700">Zone concurrents</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-sm inline-block bg-emerald-600" />
-                  <span className="text-gray-700">Tournées optimisées</span>
-                </div>
-              </div>
-            </div>
-
-            {/* KPI cards */}
-            <div className="grid grid-cols-3 divide-x divide-gray-100 border-t border-gray-100">
-              {[
-                { value: "247", label: "Zones analysées" },
-                { value: "+34%", label: "Optimisation" },
-                { value: "12 800 km", label: "Distance épargnée" },
-              ].map((kpi, i) => (
-                <div key={i} className="py-3 px-3 text-center">
-                  <p className="font-bold text-sm" style={{ color: "#064e3b" }}>{kpi.value}</p>
-                  <p className="text-gray-500 text-xs mt-0.5">{kpi.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
+        </div>
+        <div style={{ display:"flex", flexWrap:"wrap", gap:12, justifyContent:"center", animation:"fadeUp .5s .32s ease both" }}>
+          <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn"
+            style={{ background:gold, color:"#04080F", border:"none", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, cursor:"pointer", display:"flex", alignItems:"center", gap:8, fontFamily:"inherit" }}>
+            📅 {P.ctaPrimary}
+          </button>
+          <a href={`https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20${encodeURIComponent(P.waText)}%20avec%20Wikolabs.`}
+            target="_blank" rel="noopener noreferrer" className="wk-wa"
+            style={{ background:"#25d366", color:"#fff", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, textDecoration:"none", display:"flex", alignItems:"center", gap:8 }}>
+            💬 WhatsApp
+          </a>
         </div>
       </section>
 
-      {/* Stats */}
-      <section id="stats" className="py-16 px-6" style={{ background: "#064e3b" }}>
-        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center text-white">
-          {[
-            { value: "34%", label: "de réduction des coûts logistiques" },
-            { value: "247", label: "zones analysées en temps réel" },
-            { value: "90j", label: "pour atteindre le ROI" },
-          ].map((stat, i) => (
-            <div key={i}>
-              <p
-                className="text-5xl font-bold mb-2"
-                style={{ fontFamily: "var(--font-display, 'Montserrat', sans-serif)", color: "#10b981" }}
-              >
-                {stat.value}
-              </p>
-              <p className="text-emerald-200 text-sm">{stat.label}</p>
+      {/* FEATURES */}
+      <section id="features" style={{ padding:"80px 40px", maxWidth:1100, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:52 }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Fonctionnalites</p>
+          <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif", lineHeight:1.15 }}>
+            Trois modules, <em style={{ fontStyle:"italic", color:gold }}>une vision complete du terrain</em>
+          </h2>
+        </div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))", gap:20 }}>
+          {P.features.map((f, i) => (
+            <div key={f.title} className="wk-card" style={{ background:card, border:`1px solid ${border}`, borderRadius:20, padding:"28px 28px 24px", position:"relative", overflow:"hidden" }}>
+              <div style={{ position:"absolute", top:0, left:0, right:0, height:2, background:`linear-gradient(90deg,transparent,${i===0?gold:accent},transparent)`, opacity:.6 }} />
+              <div style={{ fontSize:"2rem", marginBottom:16 }}>{i===0?"🗺️":i===1?"🚚":"🔍"}</div>
+              <h3 style={{ fontSize:"1.05rem", fontWeight:700, color:txt1, marginBottom:10 }}>{f.title}</h3>
+              <p style={{ fontSize:"0.88rem", color:txt2, lineHeight:1.7, margin:0 }}>{f.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Features */}
-      <section id="fonctionnalites" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2
-            className="text-3xl font-bold text-center text-gray-900 mb-14"
-            style={{ fontFamily: "var(--font-display, 'Montserrat', sans-serif)" }}
-          >
-            Trois modules, <span style={{ color: "#064e3b" }}>une vision complète du terrain</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "🗺️",
-                title: "Analyse de territoire",
-                desc: "Dessinez vos zones de chalandise et laissez l'IA les scorer selon leur potentiel de chiffre d'affaires. Identifiez les zones sous-exploitées et priorisez vos actions commerciales.",
-                bullets: [
-                  "Dessin de zones libre ou par découpage INSEE",
-                  "Score IA : potentiel revenus, densité population",
-                  "Export des recommandations par zone",
-                ],
-              },
-              {
-                icon: "🚚",
-                title: "Optimisation logistique",
-                desc: "L'IA recalcule en temps réel vos tournées de livraison en tenant compte du trafic, des créneaux horaires et de vos contraintes métier. Réduisez vos coûts kilométriques dès le premier mois.",
-                bullets: [
-                  "Recalcul de tournées en temps réel",
-                  "Intégration trafic live & météo",
-                  "Réduction garantie de 20 à 40 % des distances",
-                ],
-              },
-              {
-                icon: "🔍",
-                title: "Cartographie concurrentielle",
-                desc: "Visualisez la densité concurrente sur votre territoire, détectez les zones blanches non couvertes et positionnez-vous stratégiquement avant vos rivaux.",
-                bullets: [
-                  "Cartographie des acteurs concurrents",
-                  "Détection des zones de marché non adressées",
-                  "Alertes lors de nouvelles implantations",
-                ],
-              },
-            ].map((feat, i) => (
-              <div key={i} className="bg-white rounded-2xl p-7 border border-emerald-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-3xl mb-4">{feat.icon}</div>
-                <h3
-                  className="text-lg font-bold text-gray-900 mb-3"
-                  style={{ fontFamily: "var(--font-display, 'Montserrat', sans-serif)" }}
-                >
-                  {feat.title}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">{feat.desc}</p>
-                <ul className="space-y-1.5">
-                  {feat.bullets.map((b, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-gray-700">
-                      <span className="font-bold mt-0.5 flex-shrink-0" style={{ color: "#10b981" }}>✓</span>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+      {/* HOW IT WORKS */}
+      <section id="process" style={{ padding:"80px 40px", background:bg2 }}>
+        <div style={{ maxWidth:860, margin:"0 auto" }}>
+          <div style={{ textAlign:"center", marginBottom:48 }}>
+            <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Comment ca marche</p>
+            <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif" }}>
+              Premieres recommandations en <em style={{ fontStyle:"italic", color:accent }}>moins d'une heure</em>
+            </h2>
+          </div>
+          <div style={{ display:"flex", flexDirection:"column", gap:14 }}>
+            {P.steps.map((s, i) => (
+              <div key={s.num} style={{ display:"flex", alignItems:"flex-start", gap:22, background:card, border:`1px solid ${border}`, borderRadius:18, padding:"22px 26px" }}>
+                <div style={{ flexShrink:0, width:46, height:46, background:i===0?goldDim:accentDim, border:`1px solid ${i===0?goldBorder:accentBorder}`, borderRadius:14, display:"flex", alignItems:"center", justifyContent:"center", color:i===0?gold:accent, fontWeight:800, fontSize:15 }}>
+                  {s.num}
+                </div>
+                <div>
+                  <h3 style={{ fontSize:"1rem", fontWeight:700, color:txt1, marginBottom:6, lineHeight:1.3 }}>{s.title}</h3>
+                  <p style={{ fontSize:"0.87rem", color:txt2, lineHeight:1.7, margin:0 }}>{s.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="cta" className="py-20 px-6 bg-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2
-            className="text-3xl font-bold text-gray-900 mb-4"
-            style={{ fontFamily: "var(--font-display, 'Montserrat', sans-serif)" }}
-          >
-            Prêt à voir votre territoire sous un nouvel angle ?
-          </h2>
-          <p className="text-gray-600 mb-8">
-            Importez vos données, configurez vos zones et obtenez vos premières recommandations géospatiales en moins d'une heure. Nos experts vous guident en live.
-          </p>
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button"
-            className="inline-block text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-opacity text-lg"
-              style={{ background: "#064e3b" }}>
-              📅 Réserver un créneau →
-            </button>
-            <a
-              href="https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20GeoMapAI%20avec%20Wikolabs."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-white font-semibold px-8 py-4 rounded-xl text-lg"
-              style={{ background: "#25d366" }}
-            >
-              💬 WhatsApp →
-            </a>
-          </div>
-          <p className="text-xs text-gray-400 mt-4">Réponse sous 24h · Sans engagement</p>
+      {/* TESTIMONIALS */}
+      <section style={{ padding:"80px 40px", maxWidth:900, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:44 }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:14 }}>Temoignages</p>
+          <h2 style={{ fontSize:"clamp(1.6rem,3vw,2.4rem)", fontWeight:700, color:txt1, fontFamily:"'Instrument Serif',Georgia,serif" }}>Ce qu'en disent nos clients</h2>
+        </div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(340px,1fr))", gap:20 }}>
+          {P.testimonials.map((t, i) => (
+            <div key={i} style={{ background:card, border:`1px solid ${border}`, borderLeft:`3px solid ${i===0?gold:accent}`, borderRadius:20, padding:"26px 26px 22px" }}>
+              <p style={{ fontSize:"0.92rem", color:txt2, lineHeight:1.75, fontStyle:"italic", marginBottom:20 }}>&ldquo;{t.quote}&rdquo;</p>
+              <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                <div style={{ width:38, height:38, borderRadius:"50%", background:i===0?goldDim:accentDim, border:`1px solid ${i===0?goldBorder:accentBorder}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16 }}>👤</div>
+                <div>
+                  <div style={{ fontSize:"0.9rem", fontWeight:700, color:txt1 }}>{t.author}</div>
+                  <div style={{ fontSize:"0.72rem", color:txt3 }}>{t.role}</div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-emerald-100 bg-green-50">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-500">
-          <span
-            className="font-bold"
-            style={{ fontFamily: "var(--font-display, 'Montserrat', sans-serif)", color: "#064e3b" }}
-          >
-            GeoMapAI
-          </span>
-          <span>© 2025 GeoMapAI — Un produit Wikolabs</span>
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem", fontSize: "0.8rem" }}>
-            <a href="mailto:team@wikolabs.com" style={{ textDecoration: "none", color: "inherit" }}>team@wikolabs.com</a>
-            <span>·</span>
-            <a href="tel:+261386626100" style={{ textDecoration: "none", color: "inherit" }}>+261 38 66 261 00</a>
-            <span>·</span>
-            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' type="button" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>Prendre RDV</button>
+      {/* CTA */}
+      <section id="cta" style={{ padding:"0 40px 100px", maxWidth:860, margin:"0 auto" }}>
+        <div style={{ background:card, border:`1px solid ${goldBorder}`, borderRadius:24, padding:"64px 48px", textAlign:"center", backgroundImage:`radial-gradient(ellipse at 50% 0%, ${goldDim} 0%, transparent 65%)` }}>
+          <p style={{ fontSize:"0.68rem", color:gold, letterSpacing:"3px", textTransform:"uppercase", fontWeight:700, marginBottom:16 }}>Demarrer</p>
+          <h2 style={{ fontSize:"clamp(1.8rem,3.5vw,2.8rem)", fontWeight:700, color:txt1, marginBottom:14, letterSpacing:"-0.02em", fontFamily:"'Instrument Serif',Georgia,serif" }}>{P.ctaTitle}</h2>
+          <p style={{ color:txt2, fontSize:"1rem", marginBottom:36, lineHeight:1.7 }}>{P.ctaDesc}</p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:12, justifyContent:"center" }}>
+            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' className="wk-btn"
+              style={{ background:gold, color:"#04080F", border:"none", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, cursor:"pointer", display:"flex", alignItems:"center", gap:8, fontFamily:"inherit" }}>
+              📅 {P.ctaPrimary}
+            </button>
+            <a href={`https://wa.me/261386626100?text=Bonjour%2C%20je%20souhaite%20discuter%20de%20${encodeURIComponent(P.waText)}%20avec%20Wikolabs.`}
+              target="_blank" rel="noopener noreferrer" className="wk-wa"
+              style={{ background:"#25d366", color:"#fff", borderRadius:10, padding:"14px 28px", fontWeight:700, fontSize:15, textDecoration:"none", display:"flex", alignItems:"center", gap:8 }}>
+              💬 WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer style={{ borderTop:`1px solid ${border}`, padding:"32px 40px" }}>
+        <div style={{ maxWidth:1200, margin:"0 auto", display:"flex", flexWrap:"wrap", justifyContent:"space-between", alignItems:"center", gap:16 }}>
+          <div>
+            <span style={{ fontWeight:800, fontSize:16, color:txt1 }}>{P.name}</span><span style={{ color:gold }}>.</span>
+            <span style={{ display:"block", fontSize:12, color:txt3, marginTop:3 }}>{P.footerTagline}</span>
+          </div>
+          <p style={{ fontSize:13, color:txt3 }}>© 2026 {P.name} — Un produit <a href="https://wikolabs.com" style={{ color:txt2, textDecoration:"none" }}>Wikolabs</a></p>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:16, fontSize:13, alignItems:"center" }}>
+            <a href="mailto:team@wikolabs.com" style={{ color:txt3, textDecoration:"none" }}>team@wikolabs.com</a>
+            <span style={{ color:txt3 }}>·</span>
+            <button data-cal-link="wikolabs-team/30min" data-cal-namespace="wk30min" data-cal-config='{"layout":"month_view"}' style={{ background:"none", border:"none", color:txt3, fontSize:13, cursor:"pointer", fontFamily:"inherit", padding:0 }}>Prendre RDV</button>
           </div>
         </div>
       </footer>
-
     </div>
   );
 }
