@@ -1,10 +1,11 @@
 version: "3.9"
 
-# GeoMapAI demo — production-ready POC.
+# geomapai demo - production-ready POC.
 # 2 services orchestrated:
 #   - geomapai (Next.js frontend on host port 3023)
 #   - geomapai-backend (FastAPI Python, internal only on 8000)
-# Internal network so the frontend can reach the backend by service name.
+# Shared external network wkdemo-net (created once by deploy.yml) avoids
+# Docker default address-pool exhaustion across all 47 LP stacks.
 
 services:
   geomapai-backend:
@@ -15,10 +16,22 @@ services:
       GROQ_API_KEY: ${GROQ_API_KEY:-}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
     networks:
+      - wkdemo_net
+
+  geomapai:
+    image: ghcr.io/wikolabs/geomapai:latest
+    container_name: geomapai
+    restart: unless-stopped
+    ports:
+      - "3023:3000"
+    environment:
+      BACKEND_URL: "http://geomapai-backend:8000"
+    depends_on:
+      - geomapai-backend
+    networks:
+      - wkdemo_net
+
+networks:
   wkdemo_net:
     name: wkdemo-net
     external: true
-networks:
-  geomapai-net:
-    name: geomapai-net
-    driver: bridge
